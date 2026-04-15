@@ -6,7 +6,7 @@
 /*   By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 15:50:13 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/04/15 15:51:39 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/04/15 17:25:45 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,19 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd((int)(nb / 10), fd);
 	c = '0' + (nb % 10);
 	write(fd, &c, 1);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*ptr;
+	size_t			i;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 16:16:49 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/04/15 16:41:45 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/04/15 17:21:24 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ int	game_tick(t_game *game)
 {
 	int	new_x;
 	int	new_y;
+	t_node	*node;
+	t_node	*new_head;
+	t_node *prev;
 
+	// pour les directions
 	if (game->dir == DIR_RIGHT)
 	{
 		new_x = game->head->x + 1;
@@ -84,4 +88,60 @@ int	game_tick(t_game *game)
 		new_x = game->head->x;
 		new_y = game->head->y + 1;
 	}
+
+	// pour collision mur
+	if ((new_x <= 0 || new_x >= GRID_W) || (new_y <= 0 || new_y >= GRID_H))
+		return (0);
+
+	// pour collision soi-meme
+	node = game->head;
+	while (node != NULL)
+	{
+		if (node->x == new_x && node->y == new_y)
+			return (0);
+		node = node->next;
+	}
+
+	// ajouter maillon en tete
+	new_head = malloc(sizeof(t_node));
+	if (!new_head)
+		return (0);
+	new_head->x = new_x;
+	new_head->y = new_y;
+	new_head->next = game->head;
+	game->head = new_head;
+
+	// si on mange ajoute devant et supprime derrière
+	if (new_x == game->food_x && new_y == game->food_y)
+	{
+		game->score++;
+		game->length++;
+		game_spawn_food(game);
+	}
+	else
+	{
+		prev = game->head;
+		while (prev->next != game->tail)
+			prev = prev->next;
+		free(game->tail);
+		game->tail = prev;
+		game->tail->next = NULL;
+	}
+	return (1);
+}
+
+void	game_free(t_game *game)
+{
+	t_node	*node;
+	t_node	*next;
+
+	node = game->head;
+	while (node != NULL)
+	{
+		next = node->next;
+		free(node);
+		node = next;
+	}
+	game->head = NULL;
+	game->tail = NULL;
 }

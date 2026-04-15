@@ -6,7 +6,7 @@
 /*   By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:33:23 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/04/15 13:16:49 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/04/15 17:46:18 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <stdlib.h>
 # include <termios.h>
 # include <signal.h>
+# include <time.h>
 
 // définir la taille de la grille
 // vitesse du jeu
 # define GRID_W 40
 # define GRID_H 20
-# define GAME_SPEED 150000
+# define GAME_SPEED 75000
 
 // voir les directions
 typedef enum e_dir
@@ -62,5 +63,25 @@ typedef struct s_game
 extern t_game	g_game;
 
 // fonctions utilisees
+// terminal.c
+void	terminal_raw_mode(t_game *game);
+void	terminal_restore(t_game *game);
+
+// render.c
+void	render_clear(void);
+void	render_board(t_game *game);
+
+// game.c
+void	game_init(t_game *game);
+void	game_spawn_food(t_game *game);
+int		game_tick(t_game *game);
+void	game_free(t_game *game);
+
+// input.c
+t_dir	input_read_dir(t_dir current);
+
+// utils.c
+void	ft_putnbr_fd(int n, int fd);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif

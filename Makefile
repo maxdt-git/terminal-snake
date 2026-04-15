@@ -6,7 +6,7 @@
 #    By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/15 10:18:28 by mde-nas           #+#    #+#              #
-#    Updated: 2026/04/15 11:32:12 by mde-nas          ###   ########.fr        #
+#    Updated: 2026/04/15 17:43:47 by mde-nas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= snake
 CC	= gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS	= main.c snake.c render.c input.c terminal.c
+SRCS	= main.c game.c render.c input.c terminal.c ft_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -31,7 +31,6 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-
 	rm -f $(NAME)
 
 re: fclean all
