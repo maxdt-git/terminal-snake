@@ -6,7 +6,7 @@
 #    By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/15 10:18:28 by mde-nas           #+#    #+#              #
-#    Updated: 2026/04/15 10:35:20 by mde-nas          ###   ########.fr        #
+#    Updated: 2026/04/15 11:32:12 by mde-nas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
+
 	rm -f $(NAME)
 
 re: fclean all

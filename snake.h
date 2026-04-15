@@ -6,7 +6,7 @@
 /*   By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:33:23 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/04/15 10:54:38 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/04/15 11:31:48 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_node
 }	t_node;
 
 // tout ce dont a besoin le jeu
+// position tete/queue - taille - direction - position food
+// score - en jeu/fini
 typedef struct s_game
 {
 	t_node *head;
