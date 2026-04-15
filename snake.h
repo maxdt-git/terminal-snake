@@ -6,14 +6,14 @@
 /*   By: mde-nas <maxdenasdetourris@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 10:33:23 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/04/15 11:31:48 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/04/15 13:16:49 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SNAKE_H
 # define SNAKE_H
 
-// tous les includes nécessaires
+// tous les includes necessaires
 # include <unistd.h>
 # include <stdlib.h>
 # include <termios.h>
@@ -60,5 +60,7 @@ typedef struct s_game
 
 // variable globale
 extern t_game	g_game;
+
+// fonctions utilisees
 
 #endif
